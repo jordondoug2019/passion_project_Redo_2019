@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CitiTech</title>
+</head>
+<body>
+<h1>CitiTech</h1>
+<br>
+<form id="LoginForm" method="post">
+    {%for message in messages%}
+    {{message}}
+    {%endfor%}
+    {%csrf_token%}
+    {{loginForm.as_p}}
+    <button>Submit</button>
+</form>
+<h2>Not a member? Sign up <a href="{%url 'signup'%}">here</a></h2>
+</body>
+</body>
+</html>

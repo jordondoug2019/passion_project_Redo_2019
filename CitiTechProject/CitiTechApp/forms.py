@@ -45,15 +45,15 @@ class UserSignUp(ModelForm):
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password']
-        age = forms.MultipleChoiceField(required=True,
-                                        widget=forms.CheckboxSelectMultiple,
-                                        choices=age_choices)
-        skill = forms.MultipleChoiceField(required=True,
-                                          widget=forms.CheckboxSelectMultiple,
-                                          choices=skill_choices)
-        experience = forms.MultipleChoiceField(required=True,
-                                               widget=forms.CheckboxSelectMultiple,
-                                               choices=tech_experience_choices)
+        # age = forms.MultipleChoiceField(required=True,
+        #                                 widget=forms.CheckboxSelectMultiple,
+        #                                 choices=age_choices)
+        # skill = forms.MultipleChoiceField(required=True,
+        #                                   widget=forms.CheckboxSelectMultiple,
+        #                                   choices=skill_choices)
+        # experience = forms.MultipleChoiceField(required=True,
+        #                                        widget=forms.CheckboxSelectMultiple,
+        #                                        choices=tech_experience_choices)
 
 
 class UserLogin(ModelForm):
@@ -66,3 +66,16 @@ class UserProfile(ModelForm):
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password']
+
+
+class ChoiceField(forms.Form):
+    # model = UserChoices
+    age = forms.MultipleChoiceField(required=True,
+                                    widget=forms.CheckboxSelectMultiple,
+                                    choices=age_choices)
+    skill = forms.MultipleChoiceField(required=True,
+                                      widget=forms.CheckboxSelectMultiple,
+                                      choices=skill_choices)
+    experience = forms.MultipleChoiceField(required=True,
+                                           widget=forms.CheckboxSelectMultiple,
+                                           choices=tech_experience_choices)

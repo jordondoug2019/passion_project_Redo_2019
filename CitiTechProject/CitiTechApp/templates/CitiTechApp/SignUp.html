@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+</head>
+<body>
+<h1> Sign up Below</h1>
+<form id="signupForm" method="post">
+    {%csrf_token%}
+    {{UserRegistration.as_p}}
+    <button>Submit</button>
+</form>
+<a href="{%url 'index'%}">Back</a>
+
+</body>
+</html>

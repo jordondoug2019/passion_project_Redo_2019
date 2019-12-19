@@ -54,6 +54,7 @@ class Event(models.Model):
     event_age_group = MultiSelectField(choices=age_choices, null=True, blank=True)
     programming_language = MultiSelectField(choices=programming_language_choices, null=True, blank=True)
     event_category = MultiSelectField(choices=tech_experience_choices)
+    choices = models.ManyToManyField('UserChoices', through='EventSelection', related_name='choices')
 
     def __str__(self):
         return f"{self.event_name} {self.location} {self.event_image} {self.description} " \
@@ -64,4 +65,8 @@ class UserChoices(models.Model):
     age_group = MultiSelectField(choices=age_choices)
     skill_level = MultiSelectField(choices=skill_choices)
     tech_experience = MultiSelectField(choices=tech_experience_choices)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+
+
+class EventSelection(models.Model):
+    choice = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(UserChoices, on_delete=models.CASCADE)

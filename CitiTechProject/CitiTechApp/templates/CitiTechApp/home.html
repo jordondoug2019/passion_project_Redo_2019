@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<form method="post">
+    {{homeChoices.as_p}}
+    <button>Submit</button>
+</form>
+
+    {%if form.homeChoices.value == "18 and Younger"%}
+   <h1>Hey</h1>
+{%endif%}
+
+</body>
+</html>
