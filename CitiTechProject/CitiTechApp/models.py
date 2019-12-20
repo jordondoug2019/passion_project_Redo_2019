@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
 
 age_choices = (
-    ('Youth', '18 and Younger'),
-    ('Young Adult', '18-20'),
-    ('Adult', '21+'),
+    ('Youth', 'Youth'),
+    ('Young Adult', 'Young Adult'),
+    ('Adult', 'Adult'),
     ('All Ages', 'All Ages'),
 )
 
@@ -54,7 +54,7 @@ class Event(models.Model):
     event_age_group = MultiSelectField(choices=age_choices, null=True, blank=True)
     programming_language = MultiSelectField(choices=programming_language_choices, null=True, blank=True)
     event_category = MultiSelectField(choices=tech_experience_choices)
-    choices = models.ManyToManyField('UserChoices', through='EventSelection', related_name='choices')
+
 
     def __str__(self):
         return f"{self.event_name} {self.location} {self.event_image} {self.description} " \
@@ -62,11 +62,11 @@ class Event(models.Model):
 
 
 class UserChoices(models.Model):
-    age_group = MultiSelectField(choices=age_choices)
-    skill_level = MultiSelectField(choices=skill_choices)
-    tech_experience = MultiSelectField(choices=tech_experience_choices)
+    age_group = MultiSelectField(choices=age_choices, null=True, blank=True)
+    skill_level = MultiSelectField(choices=skill_choices, null=True, blank=True)
+    tech_experience = MultiSelectField(choices=tech_experience_choices, null=True, blank=True)
 
 
 class EventSelection(models.Model):
-    choice = models.ForeignKey(Event, on_delete=models.CASCADE)
-    event = models.ForeignKey(UserChoices, on_delete=models.CASCADE)
+    choice = models.ForeignKey(UserChoices, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)

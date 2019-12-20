@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 from .models import Event, UserChoices
 
 age_choices = (
-    ('Youth', '18 and Younger'),
-    ('Young Adult', '18-20'),
-    ('Adult', '21+'),
+    ('Youth', 'Youth'),
+    ('Young Adult', 'Young Adult'),
+    ('Adult', 'Adult'),
     ('All Ages', 'All Ages'),
 )
 
@@ -68,14 +68,17 @@ class UserProfile(ModelForm):
         fields = ['username', 'first_name', 'last_name', 'email', 'password']
 
 
-class ChoiceField(forms.Form):
-    # model = UserChoices
-    age = forms.MultipleChoiceField(required=True,
-                                    widget=forms.CheckboxSelectMultiple,
-                                    choices=age_choices)
-    skill = forms.MultipleChoiceField(required=True,
-                                      widget=forms.CheckboxSelectMultiple,
-                                      choices=skill_choices)
-    experience = forms.MultipleChoiceField(required=True,
-                                           widget=forms.CheckboxSelectMultiple,
-                                           choices=tech_experience_choices)
+class ChoiceField(ModelForm):
+    class Meta:
+        model = UserChoices
+        fields = ['age_group', 'skill_level', 'tech_experience']
+    # # model = UserChoices
+    # age = forms.MultipleChoiceField(required=True,
+    #                                 widget=forms.CheckboxSelectMultiple,
+    #                                 choices=age_choices)
+    # skill = forms.MultipleChoiceField(required=True,
+    #                                   widget=forms.CheckboxSelectMultiple,
+    #                                   choices=skill_choices)
+    # experience = forms.MultipleChoiceField(required=True,
+    #                                        widget=forms.CheckboxSelectMultiple,
+    #                                        choices=tech_experience_choices)

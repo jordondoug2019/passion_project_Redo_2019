@@ -6,13 +6,16 @@
 </head>
 <body>
 <form method="post">
+    {%csrf_token%}
     {{homeChoices.as_p}}
     <button>Submit</button>
 </form>
+{{eventAge}}
+{{eventSkill}}
+{{eventCat}}
 
-    {%if form.homeChoices.value == "18 and Younger"%}
    <h1>Hey</h1>
-{%endif%}
+
 
 </body>
 </html>
