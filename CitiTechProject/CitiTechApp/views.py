@@ -56,12 +56,12 @@ def home(request):
             print(temp)
             print(temp2)
             print(temp3)
-        Event.objects.filter(event_age_group=temp)
-        print(Event.objects.filter(event_age_group=temp))
-        Event.objects.filter(event_skill_level=temp2)
-        print(Event.objects.filter(event_skill_level=temp2))
-        Event.objects.filter(event_category=temp3)
-        print(Event.objects.filter(event_category=temp3))
+            Event.objects.filter(event_age_group=temp)
+            print(Event.objects.filter(event_age_group=temp))
+            Event.objects.filter(event_skill_level=temp2)
+            print(Event.objects.filter(event_skill_level=temp2))
+            Event.objects.filter(event_category=temp3)
+            print(Event.objects.filter(event_category=temp3))
     context = {
         'homeChoices': ChoiceField,
         'eventAge': Event.objects.filter(event_age_group=temp),
