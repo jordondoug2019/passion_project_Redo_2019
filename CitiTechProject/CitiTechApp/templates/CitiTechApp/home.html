@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {%load static%}
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
 <body>
-<form method="post">
+<form method="post" onsubmit="showEvents()">
+
     {%csrf_token%}
     {{homeChoices.as_p}}
     <button>Submit</button>
 </form>
-{{eventAge}}
-{{eventSkill}}
-{{eventCat}}
-
-   <h1>Hey</h1>
-
-
+<div id="allEvents">
+    <h3 id="events">{{allEvents}}</h3>
+</div>
+<div id="filterEvents">
+{% for each in eventAge%}
+<div>
+   {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
+   <h2>{{each.event_name}}</h2>
+    <p>{{each.date}}</p>
+    {%if each.time%}<p>{{each.time}}</p>{%endif%}
+    <p>{{each.location}}</p>
+</div>
+{%endfor%}
+{%for each in eventSkill%}
+<div>
+    {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
+    <h2>{{each.event_name}}</h2>
+    <p>{{each.date}}</p>
+    {%if each.time%}<p>{{each.time}}</p>{%endif%}
+    <p>{{each.location}}</p>
+</div>
+{%endfor%}
+{%for each in eventCat%}
+<div>
+    {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
+    <h2>{{each.event_name}}</h2>
+    <p>{{each.date}}</p>
+    {%if each.time%}<p>{{each.time}}</p>{%endif%}
+    <p>{{each.location}}</p>
+</div>
+{%endfor%}
+</div>
+<script src="{% static 'CitiTechApp/js/home.js' %}"></script>
 </body>
+
 </html>

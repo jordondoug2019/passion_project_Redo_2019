@@ -55,7 +55,6 @@ class Event(models.Model):
     programming_language = MultiSelectField(choices=programming_language_choices, null=True, blank=True)
     event_category = MultiSelectField(choices=tech_experience_choices)
 
-
     def __str__(self):
         return f"{self.event_name} {self.location} {self.event_image} {self.description} " \
                f"{self.event_age_group} {self.programming_language} {self.event_category}"

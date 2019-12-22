@@ -45,7 +45,10 @@ def signup(request):
 def home(request):
     # if Event.objects.filter(event_age_group="18 and Younger"):
     #     print(Event.event_age_group)
-    global temp, temp2, temp3
+    # global temp, temp2, temp3
+    temp = " "
+    temp2 = " "
+    temp3 = " "
     if request.method == 'POST':
         form = ChoiceField(request.POST or None)
         if form.is_valid():
@@ -64,6 +67,7 @@ def home(request):
             print(Event.objects.filter(event_category=temp3))
     context = {
         'homeChoices': ChoiceField,
+        'allEvents': Event.objects.all(),
         'eventAge': Event.objects.filter(event_age_group=temp),
         'eventSkill': Event.objects.filter(event_skill_level=temp2),
         'eventCat': Event.objects.filter(event_category=temp3)
