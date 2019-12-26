@@ -26,11 +26,14 @@ def signup(request):
     if request.method == 'POST':
         user_signup = UserSignUp(request.POST or None)
         if user_signup.is_valid():
-            user_signup = User.objects.create_user(first_name=request.POST['first_name'],
-                                                   last_name=request.POST['last_name'],
-                                                   username=request.POST['username'],
-                                                   email=request.POST['email'],
-                                                   password=request.POST['password'])
+            user_signup = UserChoices.objects.create_user(first_name=request.POST['first_name'],
+                                                          last_name=request.POST['last_name'],
+                                                          username=request.POST['username'],
+                                                          email=request.POST['email'],
+                                                          password=request.POST['password'],
+                                                          age_group=request.POST['age_group'],
+                                                          skill_level=request.POST['skill_level'],
+                                                          tech_experience=request.POST['tech_experience'])
             login(request, user_signup)
             return redirect('home')
         else:
