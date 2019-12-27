@@ -11,11 +11,12 @@ def index(request):
         user_login = authenticate(username=request.POST['username'], password=request.POST["password"])
         if user_login is not None:
             login(request, user_login)
-            print(User.objects.tech_experience)
+
             return redirect('home')
         else:
             messages.error(request, "Email or Password is incorrect")
-            return redirect('logIn')
+            print()
+            return redirect('index')
     context = {
         'loginForm': UserLogin
     }
@@ -26,19 +27,20 @@ def signup(request):
     if request.method == 'POST':
         user_signup = UserSignUp(request.POST or None)
         if user_signup.is_valid():
-            user_signup = UserChoices.objects.create_user(first_name=request.POST['first_name'],
-                                                          last_name=request.POST['last_name'],
-                                                          username=request.POST['username'],
-                                                          email=request.POST['email'],
-                                                          password=request.POST['password'],
-                                                          age_group=request.POST['age_group'],
-                                                          skill_level=request.POST['skill_level'],
-                                                          tech_experience=request.POST['tech_experience'])
+            user_signup = UserChoices.objects.create(first_name=request.POST['first_name'],
+                                                     last_name=request.POST['last_name'],
+                                                     username=request.POST['username'],
+                                                     email=request.POST['email'],
+                                                     password=request.POST['password'],
+                                                     age_group=request.POST['age_group'],
+                                                     skill_level=request.POST['skill_level'],
+                                                     tech_experience=request.POST['tech_experience'])
+            user_signup.save()
             login(request, user_signup)
             return redirect('home')
         else:
             messages.error(request, "Information already Exist!")
-            return redirect('signUp')
+            return redirect('signup')
     context = {
         'UserRegistration': UserSignUp
     }

@@ -8,10 +8,11 @@
 <h1>CitiTech</h1>
 <br>
 <form id="LoginForm" method="post">
+    {%csrf_token%}
     {%for message in messages%}
     {{message}}
     {%endfor%}
-    {%csrf_token%}
+
     {{loginForm.as_p}}
     <button>Submit</button>
 </form>

@@ -3,6 +3,7 @@ from datetime import date
 from django.contrib.auth.models import User
 from django.db.models.manager import BaseManager
 from django.db.models.query import QuerySet
+from django.utils import timezone
 from multiselectfield import MultiSelectField
 
 age_choices = (
@@ -92,15 +93,20 @@ class Event(models.Model):
 
 class UserChoices(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    first_name = models.CharField(max_length=20, default='First Name', blank=False)
-    last_name = models.CharField(max_length=20, default='Last Name', blank=False)
-    password = models.CharField(max_length=20, unique=True, default='Password', blank=False)
-    username = models.CharField(max_length=20, unique=True, default='Username', blank=False)
-    email = models.EmailField(max_length=150, default='Email', blank=False)
+    first_name = models.CharField(max_length=20, default=' ')
+    last_name = models.CharField(max_length=20, default=' ')
+    password = models.CharField(max_length=20, default=' ')
+    username = models.CharField(max_length=20, default=' ')
+    email = models.EmailField(max_length=150, default=' ')
     age_group = MultiSelectField(choices=age_choices, null=True, blank=False)
     skill_level = MultiSelectField(choices=skill_choices, null=True, blank=False)
     tech_experience = MultiSelectField(choices=tech_experience_choices, null=True, blank=False)
-    #
+    last_login = models.DateTimeField(default=timezone.now)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
+    groups = models.OneToOneField('auth.Group', unique=True, on_delete=models.CASCADE)
+
     # objects = UserManager()
 
 
