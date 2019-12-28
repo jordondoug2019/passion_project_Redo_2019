@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="filterEvents">
+    <form method="post">
+
+        {%csrf_token%}
+        {{form.as_p}}
+        <button id="btn">Submit</button>
+    </form>
+    {% for each in EventAge%}
+    <div>
+        {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
+        <h2>{{each.event_name}}</h2>
+        <p>{{each.date}}</p>
+        {%if each.time%}<p>{{each.time}}</p>{%endif%}
+        <p>{{each.location}}</p>
+    </div>
+    {%endfor%}
+    {%for each in EventSkill%}
+    <div>
+        {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
+        <h2>{{each.event_name}}</h2>
+        <p>{{each.date}}</p>
+        {%if each.time%}<p>{{each.time}}</p>{%endif%}
+        <p>{{each.location}}</p>
+    </div>
+    {%endfor%}
+    {%for each in EventExp%}
+    <div>
+        {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
+        <h2>{{each.event_name}}</h2>
+        <p>{{each.date}}</p>
+        {%if each.time%}<p>{{each.time}}</p>{%endif%}
+        <p>{{each.location}}</p>
+    </div>
+    {%endfor%}
+</div>
+</body>
+</html>

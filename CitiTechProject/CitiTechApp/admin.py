@@ -9,20 +9,20 @@ from .models import Event, UserChoices
 
 # Define an inline admin descriptor for Employee model
 # which acts a bit like a singleton
-class UserInline(admin.StackedInline):
-    model = UserChoices
-    can_delete = False
-    verbose_name_plural = 'user'
-
-
-# Define a new User admin
-class MyUserAdmin(BaseUserAdmin):
-    inlines = (UserInline,)
+# class UserInline(admin.StackedInline):
+#     model = UserChoices
+#     can_delete = False
+#     verbose_name_plural = 'user'
+#
+#
+# # Define a new User admin
+# class MyUserAdmin(BaseUserAdmin):
+#     inlines = (UserInline,)
+#     filter_horizontal = ['groups', 'user_permissions']
 
 
 # Re-register UserAdmin
-admin.site.unregister(User)
-admin.site.register(UserChoices, UserAdmin)
+admin.site.register(UserChoices)
 
 # Register your models here.
 

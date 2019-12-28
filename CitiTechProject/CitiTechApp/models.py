@@ -1,6 +1,7 @@
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from datetime import date
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 from django.db.models.manager import BaseManager
 from django.db.models.query import QuerySet
 from django.utils import timezone
@@ -92,22 +93,24 @@ class Event(models.Model):
 
 
 class UserChoices(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default='', null=False, primary_key=True)
     first_name = models.CharField(max_length=20, default=' ')
     last_name = models.CharField(max_length=20, default=' ')
     password = models.CharField(max_length=20, default=' ')
     username = models.CharField(max_length=20, default=' ')
     email = models.EmailField(max_length=150, default=' ')
-    age_group = MultiSelectField(choices=age_choices, null=True, blank=False)
-    skill_level = MultiSelectField(choices=skill_choices, null=True, blank=False)
-    tech_experience = MultiSelectField(choices=tech_experience_choices, null=True, blank=False)
+    age_group = MultiSelectField(choices=age_choices, null=True, blank=True)
+    skill_level = MultiSelectField(choices=skill_choices, null=True, blank=True)
+    tech_experience = MultiSelectField(choices=tech_experience_choices, null=True, blank=True)
     last_login = models.DateTimeField(default=timezone.now)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
-    groups = models.OneToOneField('auth.Group', unique=True, on_delete=models.CASCADE)
 
-    # objects = UserManager()
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['username', 'password', 'age_group', 'skill_level', 'tech_experience']
+
+
+
+# user_related_events = models.ManyToManyField(Event, blank=True)
+# objects = UserManager()
 
 
 # is_anonymous = models.BooleanField(default=False)

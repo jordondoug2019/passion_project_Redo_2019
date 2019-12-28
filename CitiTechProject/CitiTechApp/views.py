@@ -27,17 +27,13 @@ def signup(request):
     if request.method == 'POST':
         user_signup = UserSignUp(request.POST or None)
         if user_signup.is_valid():
-            user_signup = UserChoices.objects.create(first_name=request.POST['first_name'],
-                                                     last_name=request.POST['last_name'],
-                                                     username=request.POST['username'],
-                                                     email=request.POST['email'],
-                                                     password=request.POST['password'],
-                                                     age_group=request.POST['age_group'],
-                                                     skill_level=request.POST['skill_level'],
-                                                     tech_experience=request.POST['tech_experience'])
-            user_signup.save()
+            user_signup = User.objects.create_user(first_name=request.POST['first_name'],
+                                                   last_name=request.POST['last_name'],
+                                                   username=request.POST['username'],
+                                                   email=request.POST['email'],
+                                                   password=request.POST['password'])
             login(request, user_signup)
-            return redirect('home')
+            return redirect('userChoice')
         else:
             messages.error(request, "Information already Exist!")
             return redirect('signup')
@@ -45,6 +41,37 @@ def signup(request):
         'UserRegistration': UserSignUp
     }
     return render(request, 'CitiTechApp/SignUp.html', context)
+
+
+def userchoice(request):
+    if request.method == 'POST':
+        form = ChoiceField(request.POST or None)
+        if form.is_valid():
+            form.cleaned_data.get("age_group")
+            form.cleaned_data.get("skill_level")
+            form.cleaned_data.get("tech_experience")
+            context = {
+                'form': ChoiceField,  #add request post method that will filter choices
+                'EventAge': Event.objects.filter(event_age_group=form.cleaned_data.get("age_group")),
+                'EventSkill': Event.objects.filter(event_skill_level=form.cleaned_data.get("skill_level")),
+                'EventExp': Event.objects.filter(event_category=form.cleaned_data.get("tech_experience"))
+            }
+            return render(request, 'CitiTechApp/userChoiceDisplay.html', context)
+    context = {'choices': ChoiceField}
+    return render(request, 'CitiTechApp/userChoice.html', context)
+
+
+def choicedisplay(request):
+    temp = request.POST.get("age_group")
+    temp2 = request.POST.get("skill_level")
+    temp3 = request.POST.get("tech_experience")
+    print(temp)
+    context = {
+        'choice1': Event.objects.filter(event_age_group=temp),
+        'choice2': Event.objects.filter(event_skill_level=temp2),
+        'choice3': Event.objects.filter(event_category=temp3)
+    }
+    return render(request, 'CitiTechApp/userChoiceDisplay.html', context)
 
 
 def home(request):

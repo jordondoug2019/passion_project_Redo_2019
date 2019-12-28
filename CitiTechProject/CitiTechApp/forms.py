@@ -43,9 +43,8 @@ programming_language_choices = (
 
 class UserSignUp(ModelForm):
     class Meta:
-        model = UserChoices
-        fields = ['first_name', 'last_name', 'password', 'username', 'email', 'age_group', 'skill_level',
-                  'tech_experience']
+        model = User
+        fields = ['first_name', 'last_name', 'username', 'password', 'email']
         # age = forms.MultipleChoiceField(required=True,
         #                                 widget=forms.CheckboxSelectMultiple,
         #                                 choices=age_choices)
