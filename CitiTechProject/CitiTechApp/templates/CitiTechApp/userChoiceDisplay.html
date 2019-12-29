@@ -12,7 +12,7 @@
         {{form.as_p}}
         <button id="btn">Submit</button>
     </form>
-    {% for each in EventAge%}
+    {% for each in choice1%}
     <div>
         {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
         <h2>{{each.event_name}}</h2>
@@ -21,7 +21,7 @@
         <p>{{each.location}}</p>
     </div>
     {%endfor%}
-    {%for each in EventSkill%}
+    {%for each in choice2%}
     <div>
         {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
         <h2>{{each.event_name}}</h2>
@@ -30,7 +30,7 @@
         <p>{{each.location}}</p>
     </div>
     {%endfor%}
-    {%for each in EventExp%}
+    {%for each in choice3%}
     <div>
         {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
         <h2>{{each.event_name}}</h2>

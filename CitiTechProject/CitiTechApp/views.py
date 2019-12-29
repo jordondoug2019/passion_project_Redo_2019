@@ -1,6 +1,8 @@
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
+from django.urls import reverse
+
 from .models import Event, UserChoices, User, EventSelection
 from .forms import UserSignUp, UserLogin, UserChoices, ChoiceField
 
@@ -47,31 +49,27 @@ def userchoice(request):
     if request.method == 'POST':
         form = ChoiceField(request.POST or None)
         if form.is_valid():
-            form.cleaned_data.get("age_group")
-            form.cleaned_data.get("skill_level")
-            form.cleaned_data.get("tech_experience")
-            context = {
-                'form': ChoiceField,  #add request post method that will filter choices
-                'EventAge': Event.objects.filter(event_age_group=form.cleaned_data.get("age_group")),
-                'EventSkill': Event.objects.filter(event_skill_level=form.cleaned_data.get("skill_level")),
-                'EventExp': Event.objects.filter(event_category=form.cleaned_data.get("tech_experience"))
-            }
-            return render(request, 'CitiTechApp/userChoiceDisplay.html', context)
+            age = form.cleaned_data.get("age_group")
+            skill = form.cleaned_data.get("skill_level")
+            exp = form.cleaned_data.get("tech_experience")
+        context = {'choice1': Event.objects.filter(event_age_group=age),
+                   'choice2': Event.objects.filter(event_skill_level=skill),
+                   'choice3': Event.objects.filter(event_category=exp),
+                   'form': ChoiceField
+                   }
+        return render(request, 'CitiTechApp/userChoiceDisplay.html', context)
     context = {'choices': ChoiceField}
     return render(request, 'CitiTechApp/userChoice.html', context)
 
 
 def choicedisplay(request):
-    temp = request.POST.get("age_group")
-    temp2 = request.POST.get("skill_level")
-    temp3 = request.POST.get("tech_experience")
-    print(temp)
-    context = {
-        'choice1': Event.objects.filter(event_age_group=temp),
-        'choice2': Event.objects.filter(event_skill_level=temp2),
-        'choice3': Event.objects.filter(event_category=temp3)
-    }
-    return render(request, 'CitiTechApp/userChoiceDisplay.html', context)
+    # context = {
+    #
+    #     'choice1': Event.objects.filter(event_age_group=),
+    #     'choice2': Event.objects.filter(event_skill_level=request.session['skill_level']),
+    #     'choice3': Event.objects.filter(event_category=request.session['tech_experience'])
+    # }
+    return render(request, 'CitiTechApp/userChoiceDisplay.html')
 
 
 def home(request):
