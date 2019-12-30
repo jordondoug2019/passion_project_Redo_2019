@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from datetime import date
@@ -93,20 +95,17 @@ class Event(models.Model):
 
 
 class UserChoices(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, default='', null=False, primary_key=True)
     first_name = models.CharField(max_length=20, default=' ')
     last_name = models.CharField(max_length=20, default=' ')
-    password = models.CharField(max_length=20, default=' ')
-    username = models.CharField(max_length=20, default=' ')
+    password = models.CharField(max_length=20, default=' ', unique=True)
+    username = models.CharField(max_length=20, default=' ', unique=True)
     email = models.EmailField(max_length=150, default=' ')
     age_group = MultiSelectField(choices=age_choices, null=True, blank=True)
     skill_level = MultiSelectField(choices=skill_choices, null=True, blank=True)
     tech_experience = MultiSelectField(choices=tech_experience_choices, null=True, blank=True)
-    last_login = models.DateTimeField(default=timezone.now)
 
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['username', 'password', 'age_group', 'skill_level', 'tech_experience']
-
+    # USERNAME_FIELD = 'username'
+    # REQUIRED_FIELDS = ['username', 'password', 'age_group', 'skill_level', 'tech_experience']
 
 
 # user_related_events = models.ManyToManyField(Event, blank=True)
@@ -119,7 +118,7 @@ class UserChoices(models.Model):
 # USERNAME_FIELD = 'username'
 # REQUIRED_FIELDS = ['username', 'email', 'password']
 
-
-class EventSelection(models.Model):
-    choice = models.ForeignKey(UserChoices, on_delete=models.CASCADE)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+#
+# class EventSelection(models.Model):
+#     choice = models.ForeignKey(UserChoices, on_delete=models.CASCADE)
+#     event = models.ForeignKey(Event, on_delete=models.CASCADE)

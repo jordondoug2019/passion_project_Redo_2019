@@ -7,17 +7,17 @@
 </head>
 <body>
 
-<form method="post" onsubmit="showEvents()">
+<form method="post" action="{%url 'userChoiceDisplay' %}" name="q">
 
     {%csrf_token%}
-    {{homeChoices.as_p}}
+    {{form.as_p}}
     <button id="btn">Submit</button>
 </form>
 <div id="allEvents">
     <h3 id="events">{{allEvents}}</h3>
 </div>
 <div id="filterEvents">
-{% for each in eventAge%}
+{% for each in choice1%}
 <div>
    {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
    <h2>{{each.event_name}}</h2>

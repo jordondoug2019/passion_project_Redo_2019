@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+<div>
+    <h1> Welcome to CitiTech</h1>
+</div>
 <div id="filterEvents">
     <form method="post">
 
@@ -12,6 +15,9 @@
         {{form.as_p}}
         <button id="btn">Submit</button>
     </form>
+    {{results}}
+    {{results2}}
+
     {% for each in choice1%}
     <div>
         {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}

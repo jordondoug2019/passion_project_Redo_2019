@@ -2,8 +2,9 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 from django.urls import reverse
+from django.db.models import Q
 
-from .models import Event, UserChoices, User, EventSelection
+from .models import Event, UserChoices
 from .forms import UserSignUp, UserLogin, UserChoices, ChoiceField
 
 
@@ -29,7 +30,7 @@ def signup(request):
     if request.method == 'POST':
         user_signup = UserSignUp(request.POST or None)
         if user_signup.is_valid():
-            user_signup = User.objects.create_user(first_name=request.POST['first_name'],
+            user_signup = UserChoices.objects.create_user(first_name=request.POST['first_name'],
                                                    last_name=request.POST['last_name'],
                                                    username=request.POST['username'],
                                                    email=request.POST['email'],
@@ -57,19 +58,23 @@ def userchoice(request):
                    'choice3': Event.objects.filter(event_category=exp),
                    'form': ChoiceField
                    }
-        return render(request, 'CitiTechApp/userChoiceDisplay.html', context)
-    context = {'choices': ChoiceField}
-    return render(request, 'CitiTechApp/userChoice.html', context)
+        return render(request, 'CitiTechApp/home.html', context)
+    return render(request, 'CitiTechApp/userChoice.html', {'choices': ChoiceField})
 
 
 def choicedisplay(request):
-    # context = {
-    #
-    #     'choice1': Event.objects.filter(event_age_group=),
-    #     'choice2': Event.objects.filter(event_skill_level=request.session['skill_level']),
-    #     'choice3': Event.objects.filter(event_category=request.session['tech_experience'])
-    # }
-    return render(request, 'CitiTechApp/userChoiceDisplay.html')
+    if request.method == "GET":
+        form = ChoiceField(request.GET or None)
+        if form.is_valid():
+            query = form.cleaned_data.get('age_group')
+            query2 = form.cleaned_data.get('skill_level')
+            query3 = request.GET.get('tech_experience')
+    context = {
+        'results': Event.objects.filter(event_age_group__contains=query),
+        'results2': Event.objects.filter(event_skill_level__contains=query2),
+        'results3': Event.objects.filter(event_category__contains=query3),
+    }
+    return render(request, 'CitiTechApp/userChoiceDisplay.html', context)
 
 
 def home(request):
@@ -96,7 +101,7 @@ def home(request):
             Event.objects.filter(event_category=temp3)
             print(Event.objects.filter(event_category=temp3))
     context = {
-        'homeChoices': ChoiceField,
+        'form': ChoiceField,
         'allEvents': Event.objects.all(),
         'eventAge': Event.objects.filter(event_age_group=temp),
         'eventSkill': Event.objects.filter(event_skill_level=temp2),

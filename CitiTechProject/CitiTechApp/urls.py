@@ -8,7 +8,7 @@ urlpatterns = [
     path('signup', views.signup, name='signup'),
     path('userChoice', views.userchoice, name='userChoice'),
     path('home/', views.home, name='home'),
-    path('userChoiceDisplay/<str:words>', views.choicedisplay, name='userChoiceDisplay')
+    path('userChoiceDisplay', views.choicedisplay, name='userChoiceDisplay')
 
     # path('user_profile/<int:user_id>/', views.userprofile, name='user_profile'),
     # path('event/<int:number>/', views.eventdisplay, name='event_display'),
