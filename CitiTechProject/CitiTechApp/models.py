@@ -95,10 +95,11 @@ class Event(models.Model):
 
 
 class UserChoices(models.Model):
+    userOnetoOne = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, default='')
     first_name = models.CharField(max_length=20, default=' ')
     last_name = models.CharField(max_length=20, default=' ')
-    password = models.CharField(max_length=20, default=' ', unique=True)
-    username = models.CharField(max_length=20, default=' ', unique=True)
+    password = models.CharField(max_length=20, default=' ' )
+    username = models.CharField(max_length=20, default=' ')
     email = models.EmailField(max_length=150, default=' ')
     age_group = MultiSelectField(choices=age_choices, null=True, blank=True)
     skill_level = MultiSelectField(choices=skill_choices, null=True, blank=True)
@@ -106,7 +107,6 @@ class UserChoices(models.Model):
 
     # USERNAME_FIELD = 'username'
     # REQUIRED_FIELDS = ['username', 'password', 'age_group', 'skill_level', 'tech_experience']
-
 
 # user_related_events = models.ManyToManyField(Event, blank=True)
 # objects = UserManager()
