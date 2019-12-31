@@ -6,9 +6,10 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('signup', views.signup, name='signup'),
-    path('userChoice', views.userchoice, name='userChoice'),
+    # path('userChoice', views.userchoice, name='userChoice'),
     path('home/', views.home, name='home'),
     path('userChoiceDisplay', views.choicedisplay, name='userChoiceDisplay'),
+    path('results', views.results, name='results')
 
 
     # path('user_profile/<int:user_id>/', views.userprofile, name='user_profile'),

@@ -62,7 +62,7 @@ def signup(request):
                                               tech_experience=request.POST['tech_experience'])
 
             login(request, user_signup)
-            return redirect('userChoice')
+            return redirect('home')
         else:
             messages.error(request, "Information already Exist!")
             return redirect('signup')
@@ -72,20 +72,20 @@ def signup(request):
     return render(request, 'CitiTechApp/SignUp.html', context)
 
 
-def userchoice(request):
-    if request.method == 'POST':
-        form = ChoiceField(request.POST or None)
-        if form.is_valid():
-            age = form.cleaned_data.get("age_group")
-            skill = form.cleaned_data.get("skill_level")
-            exp = form.cleaned_data.get("tech_experience")
-        context = {'choice1': Event.objects.filter(event_age_group=age),
-                   'choice2': Event.objects.filter(event_skill_level=skill),
-                   'choice3': Event.objects.filter(event_category=exp),
-                   'form': ChoiceField
-                   }
-        return render(request, 'CitiTechApp/home.html', context)
-    return render(request, 'CitiTechApp/userChoice.html', {'choices': ChoiceField})
+# def userchoice(request):
+#     if request.method == 'POST':
+#         form = ChoiceField(request.POST or None)
+#         if form.is_valid():
+#             age = form.cleaned_data.get("age_group")
+#             skill = form.cleaned_data.get("skill_level")
+#             exp = form.cleaned_data.get("tech_experience")
+#         context = {'choice1': Event.objects.filter(event_age_group=age),
+#                    'choice2': Event.objects.filter(event_skill_level=skill),
+#                    'choice3': Event.objects.filter(event_category=exp),
+#                    'form': ChoiceField
+#                    }
+#         return render(request, 'CitiTechApp/home.html', context)
+#     return render(request, 'CitiTechApp/userChoice.html', {'choices': ChoiceField})
 
 
 def choicedisplay(request):
@@ -104,6 +104,10 @@ def choicedisplay(request):
 
 
 def home(request):
+    pk = request.user
+    UserChoices.objects.get(pk=request.user)
+    # print(pk)
+    # Event.objects.filter(event_age_group=UserChoices.userOnetoOne)
     # if Event.objects.filter(event_age_group="18 and Younger"):
     #     print(Event.event_age_group)
     # global temp, temp2, temp3
@@ -128,10 +132,28 @@ def home(request):
             print(Event.objects.filter(event_category=temp3))
     context = {
         'form': ChoiceField,
-        'allEvents': Event.objects.all(),
+        # 'allEvents': Event.objects.all(),
         'eventAge': Event.objects.filter(event_age_group=temp),
         'eventSkill': Event.objects.filter(event_skill_level=temp2),
-        'eventCat': Event.objects.filter(event_category=temp3)
-        # 'choice1': choice1
+        'eventCat': Event.objects.filter(event_category=temp3),
+        'userAge': Event.objects.filter(event_age_group=request.user.profile.age_group),
+        'userSkill': Event.objects.filter(event_skill_level=request.user.profile.skill_level),
+        'userExp': Event.objects.filter(event_category=request.user.profile.tech_experience)
+
+        # 'choice1': Event.objects.get(event_age_group=request.age_group)
+        # 'choice2': Event.objects.filter(event_skill_level=user_skill_choice),
+        # 'choice3': Event.objects.filter(event_category=user_exp_choice)
     }
     return render(request, 'CitiTechApp/home.html', context)
+
+
+def results(request):
+    if request.method == "GET":
+        query = request.GET.get('age_group')
+        query2 = request.GET.get('skill_level')
+        query3 = request.GET.get('tech_experience')
+    context = {
+        'results': Event.objects.filter(Q(event_age_group__contains=query) | Q(event_skill_level=query2) |
+                                        Q(event_category=query3))
+    }
+    return render(request, 'CitiTechApp/results.html', context)

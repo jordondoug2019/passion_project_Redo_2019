@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<form method="post" action="{%url 'userChoiceDisplay' %}" name="q">
+<form method="get" action="{%url 'results' %}" name="q">
 
     {%csrf_token%}
     {{form.as_p}}
@@ -17,7 +17,11 @@
     <h3 id="events">{{allEvents}}</h3>
 </div>
 <div id="filterEvents">
-{% for each in choice1%}
+    {{choice1}}
+    {{userAge}}
+    {{userSkill}}
+    {{userExp}}
+{% for each in eventAge%}
 <div>
    {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
    <h2>{{each.event_name}}</h2>
