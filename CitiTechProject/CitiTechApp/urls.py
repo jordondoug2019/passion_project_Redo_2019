@@ -9,7 +9,8 @@ urlpatterns = [
     # path('userChoice', views.userchoice, name='userChoice'),
     path('home/', views.home, name='home'),
     path('userChoiceDisplay', views.choicedisplay, name='userChoiceDisplay'),
-    path('results', views.results, name='results')
+    path('results', views.results, name='results'),
+    path('logout/', views.logOut, name='logout'),
 
 
     # path('user_profile/<int:user_id>/', views.userprofile, name='user_profile'),

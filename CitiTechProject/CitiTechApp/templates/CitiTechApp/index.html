@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {%load static%}
     <meta charset="UTF-8">
     <title>CitiTech</title>
+    <link rel="stylesheet" href="{%static 'CitiTechApp/css/index.css' %}" type="text/css">
 </head>
 <body>
-<h1>CitiTech</h1>
+<div id="heading">
+    <h1>CitiTech</h1>
+    <p>"Shape your citi, Shape your experience"</p>
+</div>
+
 <br>
 {%for message in messages%}
 {{message}}
 {%endfor%}
-<form id="LoginForm" method="post">
-    {%csrf_token%}
-    {{loginForm.as_p}}
-    <button>Submit</button>
-</form>
+<div id="indexpage">
+    <form id="LoginForm" method="post">
+        {%csrf_token%}
+        {{loginForm.as_p}}
+        <button id="submitbtn">Submit</button>
+    </form>
+</div>
+
 <h2>Not a member? Sign up <a href="{%url 'signup'%}">here</a></h2>
 </body>
 </body>

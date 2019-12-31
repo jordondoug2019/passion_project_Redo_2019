@@ -1,0 +1,28 @@
+html{
+    background-image: url("images/modern-city-skyline-background_77417-791.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#indexpage{
+    margin-left: 40%;
+    margin-top: 5%;
+    margin-right: 40%;
+    margin-bottom: 5%;
+    border: 1px solid black;
+}
+#LoginForm{
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+#submitbtn{
+    margin-left: 30%;
+}
+h2{
+    text-align: center;
+}
+#heading{
+    margin-left: 40%;
+}
+h1{
+  margin-left: 9%;
+}

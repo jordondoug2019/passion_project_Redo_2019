@@ -111,31 +111,31 @@ def home(request):
     # if Event.objects.filter(event_age_group="18 and Younger"):
     #     print(Event.event_age_group)
     # global temp, temp2, temp3
-    temp = " "
-    temp2 = " "
-    temp3 = " "
-    if request.method == 'POST':
-        form = ChoiceField(request.POST or None)
-        if form.is_valid():
-            temp = form.cleaned_data.get("age_group")
-            temp2 = form.cleaned_data.get("skill_level")
-            temp3 = form.cleaned_data.get("tech_experience")
-
-            print(temp)
-            print(temp2)
-            print(temp3)
-            Event.objects.filter(event_age_group=temp)
-            print(Event.objects.filter(event_age_group=temp))
-            Event.objects.filter(event_skill_level=temp2)
-            print(Event.objects.filter(event_skill_level=temp2))
-            Event.objects.filter(event_category=temp3)
-            print(Event.objects.filter(event_category=temp3))
+    # temp = " "
+    # temp2 = " "
+    # temp3 = " "
+    # if request.method == 'POST':
+    #     form = ChoiceField(request.POST or None)
+    #     if form.is_valid():
+    #         temp = form.cleaned_data.get("age_group")
+    #         temp2 = form.cleaned_data.get("skill_level")
+    #         temp3 = form.cleaned_data.get("tech_experience")
+    #
+    #         print(temp)
+    #         print(temp2)
+    #         print(temp3)
+    #         Event.objects.filter(event_age_group=temp)
+    #         print(Event.objects.filter(event_age_group=temp))
+    #         Event.objects.filter(event_skill_level=temp2)
+    #         print(Event.objects.filter(event_skill_level=temp2))
+    #         Event.objects.filter(event_category=temp3)
+    #         print(Event.objects.filter(event_category=temp3))
     context = {
         'form': ChoiceField,
         # 'allEvents': Event.objects.all(),
-        'eventAge': Event.objects.filter(event_age_group=temp),
-        'eventSkill': Event.objects.filter(event_skill_level=temp2),
-        'eventCat': Event.objects.filter(event_category=temp3),
+        # 'eventAge': Event.objects.filter(event_age_group=temp),
+        # 'eventSkill': Event.objects.filter(event_skill_level=temp2),
+        # 'eventCat': Event.objects.filter(event_category=temp3),
         'userAge': Event.objects.filter(event_age_group=request.user.profile.age_group),
         'userSkill': Event.objects.filter(event_skill_level=request.user.profile.skill_level),
         'userExp': Event.objects.filter(event_category=request.user.profile.tech_experience)
@@ -157,3 +157,8 @@ def results(request):
                                         Q(event_category=query3))
     }
     return render(request, 'CitiTechApp/results.html', context)
+
+
+def logOut(request):
+    logout(request)
+    return redirect('index')

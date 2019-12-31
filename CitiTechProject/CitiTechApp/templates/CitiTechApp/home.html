@@ -21,7 +21,7 @@
     {{userAge}}
     {{userSkill}}
     {{userExp}}
-{% for each in eventAge%}
+{% for each in userAge%}
 <div>
    {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
    <h2>{{each.event_name}}</h2>
@@ -30,7 +30,7 @@
     <p>{{each.location}}</p>
 </div>
 {%endfor%}
-{%for each in eventSkill%}
+{%for each in userSkill%}
 <div>
     {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
     <h2>{{each.event_name}}</h2>
@@ -39,7 +39,7 @@
     <p>{{each.location}}</p>
 </div>
 {%endfor%}
-{%for each in eventCat%}
+{%for each in userExp%}
 <div>
     {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
     <h2>{{each.event_name}}</h2>
