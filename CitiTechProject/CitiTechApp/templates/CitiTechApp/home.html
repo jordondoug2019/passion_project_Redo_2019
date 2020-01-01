@@ -4,50 +4,63 @@
     {%load static%}
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="{%static 'CitiTechApp/css/home.css' %}" type="text/css">
 </head>
 <body>
+<div id="homeDiv">
+    <h3>CitiTech</h3>
+    <p>"Shape your citi, Shape your experience"</p>
 
-<form method="get" action="{%url 'results' %}" name="q">
-
+</div>
+<div id="navBar">
+    <h4>Welcome Back, <a href="{% url 'user_profile' %}">{{request.user.username}}</a> </h4>
+</div>
+<br>
+<br>
+<br>
+<hr>
+<div id="mainDiv">
+<form method="get" action="{%url 'results' %}" name="q" id="homeForm">
+    <h4>CitiFilter</h4>
     {%csrf_token%}
     {{form.as_p}}
     <button id="btn">Submit</button>
 </form>
-<div id="allEvents">
-    <h3 id="events">{{allEvents}}</h3>
-</div>
 <div id="filterEvents">
-    {{choice1}}
-    {{userAge}}
-    {{userSkill}}
-    {{userExp}}
-{% for each in userAge%}
-<div>
-   {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
-   <h2>{{each.event_name}}</h2>
-    <p>{{each.date}}</p>
-    {%if each.time%}<p>{{each.time}}</p>{%endif%}
-    <p>{{each.location}}</p>
-</div>
-{%endfor%}
-{%for each in userSkill%}
-<div>
-    {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
-    <h2>{{each.event_name}}</h2>
-    <p>{{each.date}}</p>
-    {%if each.time%}<p>{{each.time}}</p>{%endif%}
-    <p>{{each.location}}</p>
-</div>
-{%endfor%}
+<!--    {{userAge}}-->
+<!--    {{userSkill}}-->
+<!--    {{userExp}}-->
+<!--{% for each in userAge%}-->
+<!--<div>-->
+<!--   {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}-->
+<!--   <h2>{{each.event_name}}</h2>-->
+<!--    <p>{{each.date}}</p>-->
+<!--    {%if each.time%}<p>{{each.time}}</p>{%endif%}-->
+<!--    <p>{{each.location}}</p>-->
+<!--</div>-->
+<!--{%endfor%}-->
+<!--{%for each in userSkill%}-->
+<!--<div>-->
+<!--    {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}-->
+<!--    <h2>{{each.event_name}}</h2>-->
+<!--    <p>{{each.date}}</p>-->
+<!--    {%if each.time%}<p>{{each.time}}</p>{%endif%}-->
+<!--    <p>{{each.location}}</p>-->
+<!--</div>-->
+<!--{%endfor%}-->
 {%for each in userExp%}
-<div>
+<div id="userExpEvents">
     {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
     <h2>{{each.event_name}}</h2>
     <p>{{each.date}}</p>
     {%if each.time%}<p>{{each.time}}</p>{%endif%}
     <p>{{each.location}}</p>
 </div>
+    <br>
 {%endfor%}
+
+</div>
+
 </div>
 <script src="{% static 'CitiTechApp/js/home.js' %}"></script>
 </body>

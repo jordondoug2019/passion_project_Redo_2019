@@ -1,0 +1,37 @@
+#mainDiv{
+    display: grid;
+    grid-template-columns:auto auto;
+}
+#filterEvents{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#homeForm{
+    margin-right: 35%;
+    margin-top: 5%;
+}
+ul{
+    list-style-type: none;
+}
+#btn{
+    margin-left: 30%;
+}
+#navBar{
+    display: inline-block;
+    float: right;
+}
+#greeting{
+    float: right;
+}
+a{
+    float: right;
+}
+#homeDiv{
+text-align: center;
+}
+#userExpEvents{
+    border: 1px solid black;
+    /*margin-left: 10%;*/
+    margin-right: 20%;
+    text-align: center;
+}

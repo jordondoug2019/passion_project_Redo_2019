@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {%load static%}
     <meta charset="UTF-8">
     <title>SignUp</title>
+    <link rel="stylesheet" href="{%static 'CitiTechApp/css/signup.css' %}" type="text/css">
 </head>
 <body>
-<h1> Sign up Below</h1>
+<div id="signUpDiv">
+    <h1> Shape your Citi, Shape your Experience with CitiTech</h1>
+    <p id="signUpPara">Keeping up with multiple events and groups can be really difficult. Have no fear, CitiTech is here!
+        CitiTech is a one stop shop for all tech related events in the Greater Memphis Area! Sign Up below and get started!</p>
+</div>
+<h1 id="join">Join CitiTech Now</h1>
 <form id="signupForm" method="post">
+    <h4>Complete the form below. Please select at least 1 option from each category!</h4>
     {%csrf_token%}
     {{UserRegistration.as_p}}
     <button>Submit</button>
 </form>
 
-<a href="{%url 'index'%}">Back</a>
+
 
 </body>
 </html>

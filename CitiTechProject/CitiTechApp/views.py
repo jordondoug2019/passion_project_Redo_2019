@@ -162,3 +162,7 @@ def results(request):
 def logOut(request):
     logout(request)
     return redirect('index')
+
+
+def user_profile(request):
+    return render(request, 'CitiTechApp/user_profile.html')
