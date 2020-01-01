@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+{%load static%}
 <head>
     <meta charset="UTF-8">
     <title>Events</title>
+    <link rel="stylesheet" href="{%static 'CitiTechApp/css/eventDisplay.css' %}" type="text/css">
 </head>
 <body>
+<div id="homeDiv">
+    <h3>CitiTech</h3>
+    <p>"Shape your citi, Shape your experience"</p>
 
+</div>
+<div id="navBar">
+    <h4><span>Welcome Back, {{request.user.username}}</span></h4>
+    <div class="dropdown-content">
+        <a href="{% url 'home' %}"><p>Home</p></a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<hr>
+<div id="eventDisplay">
+    {%if Event.event_image%} <img width="150" height="150" src="{{Event.event_image.url}}"> {%endif%}
+    <h1>{{Event.event_name}}</h1>
+   <h3>Date:{{Event.date}}</h3>
+    <h3>{%if Event.time%}{{Event.time}}</h3>{%endif%}
+   <h3>Location:{{Event.location}}</h3>
+    <h3>Description:{{Event.description}}</h3>
+</div>
 </body>
 </html>

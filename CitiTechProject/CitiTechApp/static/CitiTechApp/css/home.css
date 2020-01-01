@@ -24,7 +24,7 @@ ul{
     float: right;
 }
 a{
-    float: right;
+    /*float: right;*/
 }
 #homeDiv{
 text-align: center;
@@ -34,4 +34,18 @@ text-align: center;
     /*margin-left: 10%;*/
     margin-right: 20%;
     text-align: center;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+#navBar:hover .dropdown-content {
+    display: block;
 }

@@ -68,7 +68,7 @@ class UserLogin(ModelForm):
 class UserProfile(ModelForm):
     class Meta:
         model = UserChoices
-        fields = ['username', 'password', 'email', 'age_group', 'skill_level', 'tech_experience']
+        fields = ['username', 'password','email', 'age_group', 'skill_level', 'tech_experience']
 
 
 class ChoiceField(ModelForm):

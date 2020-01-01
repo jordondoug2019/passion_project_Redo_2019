@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.db.models import Q
 
 from .models import Event, UserChoices, User
-from .forms import UserSignUp, UserLogin, UserChoices, ChoiceField
+from .forms import UserSignUp, UserLogin, UserChoices, ChoiceField, UserProfile
 
 
 # Create your views here.
@@ -164,5 +164,29 @@ def logOut(request):
     return redirect('index')
 
 
-def user_profile(request):
-    return render(request, 'CitiTechApp/user_profile.html')
+def user_profile(request, pk):
+    userProfile = get_object_or_404(UserChoices, pk=pk)
+    prefillform = UserProfile(request.POST or None, instance=userProfile)
+    if request.method == "POST":
+        if prefillform.is_valid():
+            prefillform.cleaned_data.get('age_group')
+            prefillform.cleaned_data.get('skill_level')
+            prefillform.cleaned_data.get('tech_experience')
+
+            prefillform.save()
+        return redirect('home')
+    context = {
+        'form': UserProfile(instance=userProfile),
+
+    }
+    return render(request, 'CitiTechApp/user_profile.html', context)
+
+
+def eventdisplay(request, pk):
+    eventID = get_object_or_404(Event, pk=pk)
+    context = {
+         'Event': eventID
+}
+    return render(request, 'CitiTechApp/event_display.html', context)
+
+

@@ -5,6 +5,11 @@
     <title>UserProfile</title>
 </head>
 <body>
-
+<form method="post" enctype="multipart/form-data" >
+    {%csrf_token%}
+    {{form.as_p}}
+    <button>Update</button>
+</form>
+<button>Logout</button>
 </body>
 </html>
