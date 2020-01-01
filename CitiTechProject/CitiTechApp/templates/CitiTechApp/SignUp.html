@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>SignUp</title>
     <link rel="stylesheet" href="{%static 'CitiTechApp/css/signup.css' %}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="animate.min.css">
 </head>
 <body>
 <div id="signUpDiv">
@@ -17,7 +20,7 @@
     <h4>Complete the form below. Please select at least 1 option from each category!</h4>
     {%csrf_token%}
     {{UserRegistration.as_p}}
-    <button>Submit</button>
+    <button>Sign Me Up!</button>
 </form>
 
 

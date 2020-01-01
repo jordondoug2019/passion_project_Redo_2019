@@ -8,21 +8,79 @@ html{
     margin-top: 5%;
     margin-right: 40%;
     margin-bottom: 5%;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    background-color: lightslategray;
+    border-radius: 17px;
+    box-shadow: 5px 10px #888888;
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+@keyframes floating {
+    from { transform: translate(0,  0px); }
+    65%  { transform: translate(0, 15px); }
+    to   { transform: translate(0, -0px); }
 }
 #LoginForm{
     margin-left: 5%;
     margin-bottom: 5%;
+    font-family: 'Bungee', cursive;
+    color: white;
+
 }
 #submitbtn{
-    margin-left: 30%;
+    margin-left: 20%;
+    margin-top: 3%;
+    position: relative;
+    bottom: 15px;
+    border-radius: 10px;
+    width: 45%;
+    background-color: white;
 }
 h2{
     text-align: center;
+    font-family: 'Bungee', cursive;
+    color: white;
 }
 #heading{
     margin-left: 40%;
+    margin-right: 10%;
+    font-family: 'Bungee Shade', cursive;
+    color: white;
+}
+
+#headline{
+    margin-right: 10%;
+    position: relative;
+    right: 47px;
+    font-family: 'Bungee', cursive;
+/*    letter-spacing: .15em;*/
+/*    overflow: hidden;*/
+/*    animation:*/
+/*            typing 2.5s steps(20, end),*/
+/*            blink-caret .75s step-end infinite;*/
 }
 h1{
   margin-left: 9%;
+    letter-spacing: .15em;
+    overflow: hidden;
+    animation:
+            typing 2.5s steps(20, end)
+
 }
+@keyframes typing {
+    from {
+        width: 0
+    }
+    to {
+        width: 100%
+    }
+}
+
+input{
+    border-radius: 10px;
+}
+/*body{*/
+/*    font-family: 'Londrina Outline', cursive;*/
+/*}*/

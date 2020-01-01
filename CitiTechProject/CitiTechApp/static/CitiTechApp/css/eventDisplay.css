@@ -1,6 +1,14 @@
+html{
+    background-image: url("images/person-holding-magnifying-glass-712786.jpg");
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+}
+
+
 #eventDisplay{
     margin-left: 5%;
 }
+
 img{
     margin-left: 43.5%;
 }

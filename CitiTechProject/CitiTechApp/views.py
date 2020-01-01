@@ -164,29 +164,37 @@ def logOut(request):
     return redirect('index')
 
 
-def user_profile(request, pk):
-    userProfile = get_object_or_404(UserChoices, pk=pk)
-    prefillform = UserProfile(request.POST or None, instance=userProfile)
-    if request.method == "POST":
-        if prefillform.is_valid():
-            prefillform.cleaned_data.get('age_group')
-            prefillform.cleaned_data.get('skill_level')
-            prefillform.cleaned_data.get('tech_experience')
-
-            prefillform.save()
-        return redirect('home')
-    context = {
-        'form': UserProfile(instance=userProfile),
-
-    }
-    return render(request, 'CitiTechApp/user_profile.html', context)
+# def user_profile(request):
+#     user = request.user.profile
+#     prefillform = UserSignUp(request.POST or None, initial={'username': request.user.profile.username,
+#                                                             'password': request.user.profile.password,
+#                                                             'email': request.user.profile.email,
+#                                                             'age_group': request.user.profile.age_group,
+#                                                             'skill_level': request.user.profile.skill_level,
+#                                                             'tech_experience': request.user.profile.tech_experience})
+#     if request.method == "POST":
+#         print("saved")
+#         if prefillform.is_valid():
+#             # user.profile.username = request.POST['username']
+#             # user.profile.password = request.POST['password']
+#             # user.profile.email = request.POST['email']
+#             # user.profile.age_group = request.POST['age_group']
+#             # user.profile.skill_level = request.POST['skill_level']
+#             # user.profile.tech_experience = request.POST['tech_experience']
+#             prefillform.instance.user = request.user
+#             prefillform.save()
+#             print("saved")
+#         return redirect('home')
+#     context = {
+#         'form': UserProfile(instance=user),
+#
+#     }
+#     return render(request, 'CitiTechApp/user_profile.html', context)
 
 
 def eventdisplay(request, pk):
     eventID = get_object_or_404(Event, pk=pk)
     context = {
-         'Event': eventID
-}
+        'Event': eventID
+    }
     return render(request, 'CitiTechApp/event_display.html', context)
-
-
