@@ -136,9 +136,9 @@ def home(request):
         # 'eventAge': Event.objects.filter(event_age_group=temp),
         # 'eventSkill': Event.objects.filter(event_skill_level=temp2),
         # 'eventCat': Event.objects.filter(event_category=temp3),
-        'userAge': Event.objects.filter(event_age_group=request.user.profile.age_group),
-        'userSkill': Event.objects.filter(event_skill_level=request.user.profile.skill_level),
-        'userExp': Event.objects.filter(event_category=request.user.profile.tech_experience)
+        'userAge': Event.objects.filter(event_age_group=request.user.profile.age_group).order_by('?'),
+        'userSkill': Event.objects.filter(event_skill_level=request.user.profile.skill_level).order_by('?'),
+        'userExp': Event.objects.filter(event_category=request.user.profile.tech_experience).order_by('?')
 
         # 'choice1': Event.objects.get(event_age_group=request.age_group)
         # 'choice2': Event.objects.filter(event_skill_level=user_skill_choice),
@@ -154,7 +154,7 @@ def results(request):
         query3 = request.GET.get('tech_experience')
     context = {
         'results': Event.objects.filter(Q(event_age_group__contains=query) | Q(event_skill_level=query2) |
-                                        Q(event_category=query3))
+                                        Q(event_category=query3)).order_by('?')
     }
     return render(request, 'CitiTechApp/results.html', context)
 

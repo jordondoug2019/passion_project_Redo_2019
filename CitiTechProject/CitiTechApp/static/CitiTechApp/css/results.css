@@ -46,7 +46,11 @@ html{
     box-shadow: 5px 10px #888888;
     font-family: 'Bungee', cursive;
     /*margin-left: 10%;*/
-    margin-right: 40%;
+    margin-right: 20%;
     text-align: center;
-    margin-left: 15%;
+    margin-left: 25%;
+}
+#title{
+    font-family: 'Bungee', cursive;
+    color: white;
 }
