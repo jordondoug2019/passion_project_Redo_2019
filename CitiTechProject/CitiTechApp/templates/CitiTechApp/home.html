@@ -59,7 +59,7 @@
 <!--{%endfor%}-->
 {%for each in userExp%}
 <div id="userExpEvents">
-    {%if each.event_image%} <img width="200" height="200" src="{{each.event_image.url}}"> {%endif%}
+    {%if each.event_image%} <img width="230" height="230" src="{{each.event_image.url}}"> {%endif%}
      <a href="{% url 'eventDisplay' each.id%}"> <h2>{{each.event_name}}</h2></a>
     <p>{{each.date}}</p>
     {%if each.time%}<p>{{each.time}}</p>{%endif%}

@@ -2,6 +2,7 @@ html{
     background-image: url("images/modern-city-skyline-background_77417-791.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    backdrop-filter: blur(3px);
 }
 ul{
     list-style-type: none;

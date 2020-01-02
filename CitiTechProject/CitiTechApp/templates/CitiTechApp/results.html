@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {%load static%}
     <meta charset="UTF-8">
     <title>Results</title>
+    <link rel="stylesheet" href="{%static 'CitiTechApp/css/results.css' %}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee&display=swap" rel="stylesheet">
 </head>
 <body>
-{{results}}
+<div id="homeDiv">
+    <h3>CitiTech</h3>
+    <p>"Shape your citi, Shape your experience"</p>
+
+</div>
+<div id="navBar">
+    <h4><span>Welcome Back, {{request.user.username}}</span></h4>
+    <div class="dropdown-content">
+        <a href="{% url 'home' %}"><p>Home</p></a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<h1>Results</h1>
+{%for each in results%}
+<div id="results">
+    {%if each.event_image%} <img width="230" height="230" src="{{each.event_image.url}}"> {%endif%}
+    <a href="{% url 'eventDisplay' each.id%}"> <h2>{{each.event_name}}</h2></a>
+    <p>{{each.date}}</p>
+    {%if each.time%}<p>{{each.time}}</p>{%endif%}
+    <p>{{each.location}}</p>
+</div>
+<br>
+{%endfor%}
+
 </body>
 </html>

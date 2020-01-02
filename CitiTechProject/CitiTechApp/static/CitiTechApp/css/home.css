@@ -2,6 +2,7 @@ html{
     background-image: url("images/modern-city-skyline-background_77417-791.jpg");
     /*background-repeat: no-repeat;*/
     /*background-size: cover;*/
+    backdrop-filter: blur(3px);
 }
 #mainDiv{
     display: grid;
@@ -17,6 +18,9 @@ html{
     box-shadow: 5px 6px #888888;
     background-color: blue;
     border-radius: 15px;
+    position: -webkit-sticky;
+    position: sticky;
+    top:15px;
 
 }
 ul{
@@ -28,6 +32,8 @@ ul{
 #navBar{
     display: inline-block;
     float: right;
+    font-family: 'Bungee', cursive;
+    color: white;
 }
 #greeting{
     float: right;
@@ -75,6 +81,7 @@ text-align: center;
 
 #navBar:hover .dropdown-content {
     display: block;
+    font-family: 'Bungee', cursive;
 }
 hr{
     color: darkblue;
