@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="{%static 'CitiTechApp/css/home.css' %}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="homeDiv">
@@ -24,12 +26,15 @@
 <br>
 <hr>
 <div id="mainDiv">
-<form method="get" action="{%url 'results' %}" name="q" id="homeForm">
-    <h4>CitiFilter</h4>
-    {%csrf_token%}
-    {{form.as_p}}
-    <button id="btn">Submit</button>
-</form>
+    <div height="200">
+        <form method="get" action="{%url 'results' %}" name="q" id="homeForm">
+            <h4>CitiFilter</h4>
+            {%csrf_token%}
+            {{form.as_p}}
+            <button id="btn">Submit</button>
+        </form>
+    </div>
+
 <div id="filterEvents">
 <!--    {{userAge}}-->
 <!--    {{userSkill}}-->
@@ -54,7 +59,7 @@
 <!--{%endfor%}-->
 {%for each in userExp%}
 <div id="userExpEvents">
-    {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
+    {%if each.event_image%} <img width="200" height="200" src="{{each.event_image.url}}"> {%endif%}
      <a href="{% url 'eventDisplay' each.id%}"> <h2>{{each.event_name}}</h2></a>
     <p>{{each.date}}</p>
     {%if each.time%}<p>{{each.time}}</p>{%endif%}

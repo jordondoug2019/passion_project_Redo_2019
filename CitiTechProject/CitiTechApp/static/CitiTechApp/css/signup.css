@@ -10,7 +10,7 @@ ul{
 #signUpDiv{
     text-align: center;
     font-family: 'Bungee Shade', cursive;
-    color: white;
+    color: darkblue;
 }
 #signUpPara{
     margin-left: 15%;
@@ -33,11 +33,12 @@ button{
     width: 35%;
     background-color: white;
     font-family: 'Bungee', cursive;
+    color: darkblue;
 }
 #join{
     margin-left: 35%;
     font-family: 'Bungee Shade', cursive;
-    color: white;
+    color: darkblue;
     animation-name: floating;
     animation-duration: 3s;
     animation-iteration-count: infinite;
