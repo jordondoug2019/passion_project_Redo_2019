@@ -18,14 +18,24 @@
     <h4><span>Welcome Back, {{request.user.username}}</span></h4>
     <div class="dropdown-content">
         <a href="{% url 'home' %}"><p>Home</p></a>
+        <a href="{% url 'contact' %}"><p>Where's my Event?</p></a>
         <a href="{% url 'logout' %}">Logout</a>
     </div>
 </div>
 <br>
 <br>
 <br>
-<br>
+<hr>
 <h1 id="title">Results</h1>
+<div id="mainDiv">
+    <div>
+        <form method="get" action="{%url 'results' %}" name="q" id="homeForm">
+            <h4>CitiFilter</h4>
+            {%csrf_token%}
+            {{form.as_p}}
+            <button id="btn">Submit</button>
+        </form>
+    </div>
 {%for each in results%}
 <div id="results">
     {%if each.event_image%} <img width="230" height="230" src="{{each.event_image.url}}"> {%endif%}
@@ -36,6 +46,8 @@
 </div>
 <br>
 {%endfor%}
-
+    <div class="cui-embed" data-cui-uid="vIgUeb" data-cui-mode="pill" data-cui-pill-button-color="#0000FF"></div>
+    <script src="https://public-assets.typeform.com/confab/embed.js" async></script>
+    <footer>Created by <a href="http://www.jordondouglas.com/">Jordon Douglas</a></footer>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, widgets
 from django import forms
 from django.contrib.auth.models import User
 from .models import Event, UserChoices
@@ -44,7 +44,7 @@ programming_language_choices = (
 class UserSignUp(ModelForm):
     class Meta:
         model = UserChoices
-        fields = ['first_name', 'last_name','username', 'password', 'email', 'age_group',
+        fields = ['first_name', 'last_name', 'username', 'password', 'email', 'age_group',
                   'skill_level',
                   'tech_experience']
 
@@ -59,7 +59,8 @@ class UserSignUp(ModelForm):
         #                                        choices=tech_experience_choices)
 
 
-class UserLogin(ModelForm):
+class UserLogin(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User
         fields = ['username', 'password']
@@ -68,7 +69,7 @@ class UserLogin(ModelForm):
 class UserProfile(ModelForm):
     class Meta:
         model = UserChoices
-        fields = ['username', 'password','email', 'age_group', 'skill_level', 'tech_experience']
+        fields = ['username', 'password', 'email', 'age_group', 'skill_level', 'tech_experience']
 
 
 class ChoiceField(ModelForm):

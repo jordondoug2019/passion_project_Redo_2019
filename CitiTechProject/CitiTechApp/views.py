@@ -154,7 +154,8 @@ def results(request):
         query3 = request.GET.get('tech_experience')
     context = {
         'results': Event.objects.filter(Q(event_age_group__contains=query) | Q(event_skill_level=query2) |
-                                        Q(event_category=query3)).order_by('?')
+                                        Q(event_category=query3)).order_by('?'),
+        'form': ChoiceField,
     }
     return render(request, 'CitiTechApp/results.html', context)
 
@@ -164,37 +165,47 @@ def logOut(request):
     return redirect('index')
 
 
-# def user_profile(request):
-#     user = request.user.profile
-#     prefillform = UserSignUp(request.POST or None, initial={'username': request.user.profile.username,
-#                                                             'password': request.user.profile.password,
-#                                                             'email': request.user.profile.email,
-#                                                             'age_group': request.user.profile.age_group,
-#                                                             'skill_level': request.user.profile.skill_level,
-#                                                             'tech_experience': request.user.profile.tech_experience})
-#     if request.method == "POST":
-#         print("saved")
-#         if prefillform.is_valid():
-#             # user.profile.username = request.POST['username']
-#             # user.profile.password = request.POST['password']
-#             # user.profile.email = request.POST['email']
-#             # user.profile.age_group = request.POST['age_group']
-#             # user.profile.skill_level = request.POST['skill_level']
-#             # user.profile.tech_experience = request.POST['tech_experience']
-#             prefillform.instance.user = request.user
-#             prefillform.save()
-#             print("saved")
-#         return redirect('home')
-#     context = {
-#         'form': UserProfile(instance=user),
 #
-#     }
-#     return render(request, 'CitiTechApp/user_profile.html', context)
+# def user_profile(request):
+# ProfileUser = request.user
+# print(request.user.profile)
+# print(request.user.profile.email)
+# print(request.user.username)
+# print(request.user.profile.tech_experience)
+# print(request.user.username)
+# print(request.user.password)
+# profile = user.profile
+# form = UserProfile(instance=profile)
+# if request.user.is_authenticated() and request.user.id == user.id:
+#     if request.method == "POST":
+#         form = UserProfile(request.POST, request.FILES, instance=profile)
+# user = request.user
+# print(request.user.password)
+# prefillform = UserProfile(request.POST or None, instance=request.user.profile)
+# prefillform = UserProfile(instance=request.user.profile)
+# if request.method == "POST":
+#     form = ChoiceField(request.POST or None)
+#     if form.is_valid():
+#         form.cleaned_data.get("age_group")
+#         form.cleaned_data.get("skill_level")
+#         form.cleaned_data.get("tech_experience")
+#     return redirect('home')
+# context = {
+#     'ProfileUser': request.user.profile,
+#     'form': ChoiceField(instance=request.user.profile),
+#
+# }
+# return render(request, 'CitiTechApp/user_profile.html', context)
 
 
 def eventdisplay(request, pk):
     eventID = get_object_or_404(Event, pk=pk)
     context = {
-        'Event': eventID
+        'Event': eventID,
+
     }
     return render(request, 'CitiTechApp/event_display.html', context)
+
+
+def contact(request):
+    return render(request, 'CitiTechApp/Contact_us.html')

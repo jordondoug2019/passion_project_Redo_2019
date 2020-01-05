@@ -1,25 +1,18 @@
-html {
+html{
     background-image: url("images/modern-city-skyline-background_77417-791.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    backdrop-filter: blur(7px);
-
+    backdrop-filter: blur(3px);
+    /*background-color: g\;*/
 }
-#eventDisplay{
-    margin-left: 5%;
-  color:black;
-    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
-    font-weight: bolder;
-
+#navBar{
+    display: inline-block;
+    float: right;
+    font-family: 'Bungee', cursive;
+    color: white;
 }
-
-img{
-    margin-left: 43.5%;
-    border-radius: 10px;
-    box-shadow: 5px 10px #888888;
-    position: relative;
-    right: 50px;
-    border: 1px solid black;
+#greeting{
+    float: right;
 }
 #homeDiv{
     text-align: center;
@@ -36,13 +29,6 @@ img{
     65%  { transform: translate(0, 15px); }
     to   { transform: translate(0, -0px); }
 }
-
-#navBar{
-    display: inline-block;
-    float: right;
-    font-family: 'Bungee', cursive;
-    color: white;
-}
 .dropdown-content {
     display: none;
     position: absolute;
@@ -55,29 +41,17 @@ img{
 
 #navBar:hover .dropdown-content {
     display: block;
-
-}
-#eventName{
-    text-align: center;
     font-family: 'Bungee', cursive;
 }
-h3{
-    text-align: center;
-}
-iframe{
-    margin-left: 15%;
-    /*margin-bottom: 15%;*/
-    box-shadow: 5px 10px #888888;
-    border-radius: 10px;
+hr{
+    color: darkblue;
+
 }
 footer {
     /*background-color: whitesmoke;*/
-    height: 70px;
-    text-align: left;
+    height: 300px;
+    /*text-align: center;*/
     font-family: 'Bungee', cursive;
     color: white;
-    /*margin-top: 10%;*/
-}
-#eventHost{
-    text-align: center;
+    margin-top: 3.5%;
 }

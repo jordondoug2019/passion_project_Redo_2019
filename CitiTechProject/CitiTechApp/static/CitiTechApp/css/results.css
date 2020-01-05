@@ -1,8 +1,12 @@
 html{
     background-image: url("images/modern-city-skyline-background_77417-791.jpg");
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
+    background-repeat: no-repeat;
+    background-size: cover;
     backdrop-filter: blur(7px);
+}
+#mainDiv{
+    display: grid;
+    grid-template-columns:auto auto;
 }
 #homeDiv{
     text-align: center;
@@ -46,11 +50,49 @@ html{
     box-shadow: 5px 10px #888888;
     font-family: 'Bungee', cursive;
     /*margin-left: 10%;*/
-    margin-right: 20%;
+    margin-right:20%;
     text-align: center;
+    margin-bottom: 5%;
     margin-left: 25%;
 }
 #title{
     font-family: 'Bungee', cursive;
     color: white;
+}
+#homeForm{
+    margin-right: 35%;
+    margin-top: 5%;
+    box-shadow: 5px 6px #888888;
+    background-color: blue;
+    border-radius: 15px;
+    /*position: -webkit-sticky;*/
+    position: sticky;
+    top:15px;
+
+}
+ul{
+    list-style-type: none;
+}
+#btn{
+    margin-left: 30%;
+}
+img{
+    margin-top: 5%;
+    border-radius: 10px;
+    border-color: black;
+}
+footer {
+    /*background-color: whitesmoke;*/
+    height: 70px;
+    text-align: center;
+    font-family: 'Bungee', cursive;
+    color: white;
+    /*margin-top: 10%;*/
+}
+button{
+    border-radius: 10px;
+    width: 45%;
+    background-color: white;
+    position: relative;
+    bottom: 10px;
 }

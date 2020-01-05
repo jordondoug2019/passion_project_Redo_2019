@@ -1,7 +1,7 @@
 html{
     background-image: url("images/modern-city-skyline-background_77417-791.jpg");
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
+    background-repeat: no-repeat;
+    background-size: cover;
     backdrop-filter: blur(3px);
 }
 #mainDiv{
@@ -64,9 +64,9 @@ text-align: center;
     box-shadow: 5px 10px #888888;
     font-family: 'Bungee', cursive;
     /*margin-left: 10%;*/
-    margin-right: 40%;
+    margin-right: 25%;
     text-align: center;
-    margin-left: 15%;
+    margin-left: 20%;
 }
 
 .dropdown-content {
@@ -102,4 +102,12 @@ button{
     background-color: white;
     position: relative;
     bottom: 10px;
+}
+footer {
+    /*background-color: whitesmoke;*/
+    height: 70px;
+    /*text-align: center;*/
+    font-family: 'Bungee', cursive;
+    color: white;
+    /*margin-top: 10%;*/
 }

@@ -18,6 +18,7 @@
     <h4><span>Welcome Back, {{request.user.username}}</span></h4>
         <div class="dropdown-content">
           <a href="{% url 'home' %}"><p>Home</p></a>
+            <a href="{% url 'contact' %}"><p>Where's my Event?</p></a>
             <a href="{% url 'logout' %}">Logout</a>
         </div>
 </div>
@@ -29,6 +30,7 @@
     <div height="200">
         <form method="get" action="{%url 'results' %}" name="q" id="homeForm">
             <h4>CitiFilter</h4>
+            <p>Please select 1 or more from each category</p>
             {%csrf_token%}
             {{form.as_p}}
             <button id="btn">Submit</button>
@@ -67,10 +69,12 @@
 </div>
     <br>
 {%endfor%}
-
+    <div class="cui-embed" data-cui-uid="vIgUeb" data-cui-mode="pill" data-cui-pill-button-color="#0000FF"></div>
+    <script src="https://public-assets.typeform.com/confab/embed.js" async></script>
 </div>
 
 </div>
+<footer>Created by <a href="http://www.jordondouglas.com/">Jordon Douglas</a></footer>
 <script src="{% static 'CitiTechApp/js/home.js' %}"></script>
 </body>
 </html>

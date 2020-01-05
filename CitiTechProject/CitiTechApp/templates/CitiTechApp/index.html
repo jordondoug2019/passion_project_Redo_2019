@@ -15,9 +15,9 @@
 </div>
 
 <br>
-{%for message in messages%}
+<p id="message">{%for message in messages%}
 {{message}}
-{%endfor%}
+    {%endfor%}</p>
 <div id="indexpage">
     <form id="LoginForm" method="post">
         {%csrf_token%}
@@ -27,6 +27,7 @@
 </div>
 
 <h2>Not a member? Sign up <a href="{%url 'signup'%}">here</a></h2>
-</body>
+<h2>Want your event to be featured on CitiTech? Click <a href="{%url 'contact' %}">here</a></h2>
+<footer>Created By <a href="http://www.jordondouglas.com/">Jordon Douglas</a></footer>
 </body>
 </html>

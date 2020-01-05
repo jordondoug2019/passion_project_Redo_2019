@@ -88,6 +88,7 @@ class Event(models.Model):
     event_age_group = MultiSelectField(choices=age_choices, null=True, blank=True)
     programming_language = MultiSelectField(choices=programming_language_choices, null=True, blank=True)
     event_category = MultiSelectField(choices=tech_experience_choices)
+    event_site = models.URLField(default='')
 
     def __str__(self):
         return f"{self.event_name} {self.location} {self.event_image} {self.description} " \
@@ -99,7 +100,7 @@ class UserChoices(models.Model):
                                         related_name='profile')
     first_name = models.CharField(max_length=20, default=' ')
     last_name = models.CharField(max_length=20, default=' ')
-    password = models.CharField(max_length=20, default=' ' )
+    password = models.CharField(max_length=20, default=' ')
     username = models.CharField(max_length=20, default=' ')
     email = models.EmailField(max_length=150, default=' ')
     age_group = MultiSelectField(choices=age_choices, null=True, blank=True)
