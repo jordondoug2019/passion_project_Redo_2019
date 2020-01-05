@@ -43,5 +43,5 @@ Event Page:
 
 
 Profile Page:
--Display Navigation bar that allows users go home (main page), logout, displays username
+-Display Navigation bar that allows users go home (main page), displays username
 - Allow users to edit username, password, email, first name, last name, add profile picture
