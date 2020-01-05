@@ -109,5 +109,16 @@ footer {
     /*text-align: center;*/
     font-family: 'Bungee', cursive;
     color: white;
-    /*margin-top: 10%;*/
+    margin-top: 10%;
+}
+#userSkill{
+    /*border: 1px solid black;*/
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 5px 10px #888888;
+    font-family: 'Bungee', cursive;
+    /*margin-left: 10%;*/
+    margin-right: 25%;
+    text-align: center;
+    margin-left: 20%;
 }
