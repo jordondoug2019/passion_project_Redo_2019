@@ -98,7 +98,7 @@ class Event(models.Model):
 class UserChoices(models.Model):
     userOnetoOne = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, default='',
                                         related_name='profile')
-    first_name = models.CharField(max_length=20, default=' ')
+    first_name = models.CharField(max_length=20, default=' ',)
     last_name = models.CharField(max_length=20, default=' ')
     password = models.CharField(max_length=20, default=' ')
     username = models.CharField(max_length=20, default=' ')
