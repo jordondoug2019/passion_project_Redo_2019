@@ -1,14 +1,16 @@
 html {
-    background-image: url("images/modern-city-skyline-background_77417-791.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    /*background-image: url("images/modern-city-skyline-background_77417-791.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    background-color: skyblue;
     backdrop-filter: blur(7px);
 
 }
 #eventDisplay{
     margin-left: 5%;
   color:black;
-    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    font-family: 'Quicksand', sans-serif;
+    /*font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;*/
     font-weight: bolder;
 
 }
@@ -23,24 +25,27 @@ img{
 }
 #homeDiv{
     text-align: center;
-    font-family: 'Bungee Shade', cursive;
-    color: darkblue;
+    font-family: 'Quicksand', sans-serif;
+    /*font-family: 'Bungee Shade', cursive;*/
+    color: orange;
     font-weight: bolder;
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+    font-size:large;
+    /*animation-name: floating;*/
+    /*animation-duration: 3s;*/
+    /*animation-iteration-count: infinite;*/
+    /*animation-timing-function: ease-in-out;*/
 }
-@keyframes floating {
-    from { transform: translate(0,  0px); }
-    65%  { transform: translate(0, 15px); }
-    to   { transform: translate(0, -0px); }
-}
+/*@keyframes floating {*/
+/*    from { transform: translate(0,  0px); }*/
+/*    65%  { transform: translate(0, 15px); }*/
+/*    to   { transform: translate(0, -0px); }*/
+/*}*/
 
 #navBar{
     display: inline-block;
     float: right;
-    font-family: 'Bungee', cursive;
+    font-family: 'Quicksand', sans-serif;
+    /*font-family: 'Bungee', cursive;*/
     color: white;
 }
 .dropdown-content {
@@ -57,9 +62,13 @@ img{
     display: block;
 
 }
+a:hover{
+    color: orange;
+}
 #eventName{
     text-align: center;
-    font-family: 'Bungee', cursive;
+    font-family: 'Quicksand', sans-serif;
+    /*font-family: 'Bungee', cursive;*/
 }
 h3{
     text-align: center;
@@ -67,14 +76,15 @@ h3{
 iframe{
     margin-left: 15%;
     /*margin-bottom: 15%;*/
-    box-shadow: 5px 10px #888888;
+    /*box-shadow: 5px 10px #888888;*/
     border-radius: 10px;
 }
 footer {
     /*background-color: whitesmoke;*/
     height: 70px;
     text-align: left;
-    font-family: 'Bungee', cursive;
+    font-family: 'Quicksand', sans-serif;
+    /*font-family: 'Bungee', cursive;*/
     color: white;
     /*margin-top: 10%;*/
 }

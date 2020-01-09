@@ -1,7 +1,8 @@
 html{
-    background-image: url("images/modern-city-skyline-background_77417-791.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    /*background-image: url("images/modern-city-skyline-background_77417-791.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    background-color: skyblue;
     backdrop-filter: blur(3px);
 }
 ul{
@@ -10,8 +11,9 @@ ul{
 }
 #signUpDiv{
     text-align: center;
-    font-family: 'Bungee Shade', cursive;
-    color: darkblue;
+    font-family: 'Quicksand', sans-serif;
+    /*font-family: 'Bungee Shade', cursive;*/
+    color: orange;
 }
 #signUpPara{
     margin-left: 15%;
@@ -25,21 +27,25 @@ ul{
     margin-right: 30%;
     border-radius: 17px;
     background-color: lightslategray;
-    box-shadow: 8px 10px #888888;
+    /*box-shadow: 8px 10px #888888;*/
 }
 button{
-    margin-left: 30%;
+    margin-left: 28%;
     margin-bottom: 5%;
     border-radius: 10px;
     width: 35%;
     background-color: white;
-    font-family: 'Bungee', cursive;
-    color: darkblue;
+    font-family: 'Quicksand', sans-serif;
+    /*font-family: 'Bungee', cursive;*/
+    color: black;
 }
 #join{
-    margin-left: 35%;
-    font-family: 'Bungee Shade', cursive;
-    color: darkblue;
+    margin-left: 43.5%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: x-large;
+    font-weight: bolder;
+    /*font-family: 'Bungee Shade', cursive;*/
+    color: orange;
     animation-name: floating;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -53,7 +59,10 @@ button{
 
 p{
     margin-left: 22%;
-    font-family: 'Bungee', cursive;
+    font-family: 'Quicksand', sans-serif;
+    font-size: large;
+    font-weight: bolder;
+    /*font-family: 'Bungee', cursive;*/
     color: white;
 }
 h4{
@@ -66,7 +75,8 @@ footer {
     /*background-color: whitesmoke;*/
     height: 70px;
     text-align: center;
-    font-family: 'Bungee', cursive;
-    color: darkblue;
+    font-family: 'Quicksand', sans-serif;
+    /*font-family: 'Bungee', cursive;*/
+    color: orange;
     /*margin-top: 10%;*/
 }
