@@ -25,7 +25,7 @@ SECRET_KEY = 'p9^4&any8_2e!xn53d=&82-3(*(hl=ul40asz@azz=%u4o6mr*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['app3.jordondouglas.com','cititech.jordondouglas.com','127.0.0.1.8007' ]
 
 
 # Application definition
