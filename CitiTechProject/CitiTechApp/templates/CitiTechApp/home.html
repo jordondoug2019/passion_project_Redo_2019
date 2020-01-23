@@ -39,19 +39,7 @@
     </div>
 
 <div id="filterEvents">
-<!--    {{userAge}}-->
-<!--    {{userSkill}}-->
-<!--    {{userExp}}-->
-<!--{% for each in userAge%}-->
-<!--<div>-->
-<!--   {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}-->
-<!--   <h2>{{each.event_name}}</h2>-->
-<!--    <p>{{each.date}}</p>-->
-<!--    {%if each.time%}<p>{{each.time}}</p>{%endif%}-->
-<!--    <p>{{each.location}}</p>-->
-<!--</div>-->
-<!--{%endfor%}-->
-{%for each in userSkill%}
+{% for each in userSkill%}
 <div id="userSkill">
     {%if each.event_image%} <img width="150" height="150" src="{{each.event_image.url}}"> {%endif%}
     <a href="{% url 'eventDisplay' each.id%}"> <h2>{{each.event_name}}</h2></a>
